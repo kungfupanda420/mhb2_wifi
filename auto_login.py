@@ -18,7 +18,7 @@ logging.basicConfig(
 def check_internet_connection():
     """Check if we have an active internet connection"""
     try:
-        response = requests.get("https://httpbin.org/get", timeout=0.1)
+        response = requests.get("https://httpbin.org/get", timeout=10)
         if response.status_code == 200:
             logging.info(" Internet connection is active")
             return True
@@ -53,7 +53,7 @@ def login_to_portal():
     
     try:
         logging.info("Attempting to login to portal...")
-        response = requests.post(url, data=payload, headers=headers, timeout=5, allow_redirects=True)
+        response = requests.post(url, data=payload, headers=headers, timeout=10, allow_redirects=True)
         # print(response.text)
         logging.debug(f"Status Code: {response.status_code}")
         logging.debug(f"Final URL: {response.url}")
